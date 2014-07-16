@@ -25,11 +25,12 @@ Adapted from code originally written by @vojtajina and @btford in [grunt-convent
 
 ## Documentation
 
-Simple usage: 
+Simple usage:
 
 ```js
 require('conventional-changelog')({
   repository: 'https://github.com/joyent/node',
+  jira: '[your-jira-issues-link]',
   version: require('./package.json').version
 }, function(err, log) {
   console.log('Here is your changelog!', log);
@@ -51,6 +52,8 @@ By default, calls the callback with a string containing a changelog from the pre
 * `subtitle` `{string}` - A string to display after the version title in the changelog. For example, it will show '## 1.0.0 "Super Version"' if codename '"Super Version"' is given. By default, it's blank.
 
 * `repository` `{string}` - If this is provided, allows issues and commit hashes to be linked to the actual commit.  Usually used with github repositories.  For example, `{repository: 'http://github.com/joyent/node'}`
+
+* `jira` `{string}` - If provided, allows the linking of JIRA style issues that will prepend the issue number to this link (don't use # when writing the commit message, just ABC-123)
 
 * `from` `{string}` - Which commit the changelog should start at. By default, uses previous tag, or if no previous tag the first commit.
 
